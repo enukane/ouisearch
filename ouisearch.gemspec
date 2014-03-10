@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["n_kane"]
   spec.email         = ["enukane@glenda9.org"]
   spec.summary       = %q{Search for IEEE OUI list with given OUI}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.description   = %q{Search for IEEE OUI list with given OUI}
   spec.homepage      = ""
   spec.license       = "MIT"
 
