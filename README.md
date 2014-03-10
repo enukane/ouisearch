@@ -1,29 +1,15 @@
 # Ouisearch
+IEEE OUI registry search tools
 
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'ouisearch'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install ouisearch
+* simple command to translate OUI into vendor name
+* stores OUI list into $HOME/.oui for local search without internet access
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+ouisearch [-r] [-d] XX:XX:XX
+```
 
-## Contributing
+* -r : force reload OUI list cache (requires internet access)
+* -d : debug output
 
-1. Fork it ( http://github.com/<my-github-username>/ouisearch/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
