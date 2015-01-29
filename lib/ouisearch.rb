@@ -1,5 +1,8 @@
-require "ouisearch/version"
-require "faraday"
+#!/usr/bin/env ruby
+
+require 'ouisearch/version'
+require 'optparse'
+require 'faraday'
 
 class OuiSearch
   URL="www.ieee.org/netstorage/standards/oui.txt"
@@ -8,7 +11,7 @@ class OuiSearch
   CACHE="#{ENV['HOME']}/.oui"
   REG=/^\s+(..)-(..)-(..)\s+\(hex\)\s+(.+)$/
 
-  def initialize args
+  def initialize args={}
     @reload = args[:reload] || false
     @debug = args[:debug] || false
     @ouis = nil
@@ -19,7 +22,7 @@ class OuiSearch
   def execute oui
     vendor = @ouis[oui.upcase]
     if vendor
-      return vendor
+      return vendor.strip
     else
       return "<UNKNOWN>"
     end
@@ -54,7 +57,7 @@ class OuiSearch
       match = line.match(REG)
       next unless match
       oui = match[1] + ":" + match[2] + ":" + match[3]
-      vendor = match[4].strip
+      vendor = match[4]
       ouis[oui.upcase] = vendor
     end
     return ouis
@@ -72,4 +75,31 @@ class OuiSearch
     return nil unless @debug
     print "#{str}\n"
   end
+end
+
+def usage
+  print "ouisearch [-d] [-r] XX:XX:XX\n"
+  exit 1
+end
+
+if __FILE__ == $0
+  opt = OptionParser.new
+  OPTS={}
+  opt.on('-r') {|v| OPTS[:reload] = true }
+  opt.on('-d') {|v| OPTS[:debug] = true }
+  opt.on('-h') {|v| usage }
+  opt.parse!(ARGV)
+
+  addr = ARGV.shift
+  usage if addr == nil
+
+  begin
+    ouisearch = OuiSearch.new(OPTS)
+  rescue => e
+    print e.message
+    exit 1
+  end
+  print "#{ouisearch.execute(addr)}\n"
+
+  exit 0
 end
