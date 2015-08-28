@@ -9,7 +9,7 @@ class OuiSearch
   URLHOST="http://standards-oui.ieee.org"
   URLPATH="/oui.txt"
   CACHE="#{ENV['HOME']}/.oui"
-  REG=/^\s+(..)-(..)-(..)\s+\(hex\)\s+(.+)$/
+  REG=/^\s*(..)-(..)-(..)\s+\(hex\)\s+(.+)$/
 
   def initialize args={}
     @reload = args[:reload] || false
