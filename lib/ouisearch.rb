@@ -5,9 +5,9 @@ require 'optparse'
 require 'faraday'
 
 class OuiSearch
-  URL="www.ieee.org/netstorage/standards/oui.txt"
-  URLHOST="http://www.ieee.org"
-  URLPATH="/netstorage/standards/oui.txt"
+  URL="http://standards-oui.ieee.org/oui.txt"
+  URLHOST="http://standards-oui.ieee.org"
+  URLPATH="/oui.txt"
   CACHE="#{ENV['HOME']}/.oui"
   REG=/^\s+(..)-(..)-(..)\s+\(hex\)\s+(.+)$/
 
