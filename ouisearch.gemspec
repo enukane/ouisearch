@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "ouisearch"
-  spec.version       = "0.0.4"
+  spec.version       = "0.0.5"
   spec.authors       = ["Naoya kaneko"]
   spec.email         = ["enukane@glenda9.org"]
   spec.summary       = %q{Search for IEEE OUI list with given OUI (with local cache)}
